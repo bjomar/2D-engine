@@ -1,0 +1,10 @@
+﻿  engine.cpp
+  main.cpp
+  Code wird generiert.
+c:\users\björn\documents\visual studio 2015\projects\2d engine\2d engine\main.cpp(25): warning C4715: "SDL_main": Nicht alle Steuerelementpfade geben einen Wert zurück.
+  4 of 132 functions ( 3.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Codegenerierung ist abgeschlossen.
+  2D engine.vcxproj -> c:\users\björn\documents\visual studio 2015\Projects\2D engine\x64\Release\2D engine.exe
+  2D engine.vcxproj -> c:\users\björn\documents\visual studio 2015\Projects\2D engine\x64\Release\2D engine.pdb (Full PDB)
