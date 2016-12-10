@@ -69,8 +69,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\björn\Documents\Visual Studio 2015\Projects\2D engine\2D engine\SDL\include;C:\Users\björn\Documents\Visual Studio 2015\Projects\2D engine\2D engine\SDL\image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\björn\Documents\Visual Studio 2015\Projects\2D engine\2D engine\SDL\lib\x64;C:\Users\björn\Documents\Visual Studio 2015\Projects\2D engine\2D engine\SDL\image\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\2D engine\SDL\include;C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\2D engine\SDL\image\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\2D engine\SDL\lib\x64;C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\2D engine\SDL\image\lib\x64;$(LibraryPath)</LibraryPath>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,12 +116,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="eventHandler.cpp" />
+    <ClCompile Include="helpers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="render.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="eventHandler.h" />
+    <ClInclude Include="helpers.h" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="render.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

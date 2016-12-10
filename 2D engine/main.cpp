@@ -1,25 +1,43 @@
 #include "main.hpp"
 #include "engine.h"
+#include "animation.h"
+#include <Windows.h>
+
 /*
-*	Description: this will get a little engine based on SDL
-*	License: GPL V2
+*	Description: little 2D engine based on SDL
+*	License: GPL V2 -> mor info: LICENSE.txt
 *
 *	todo:
-*		-everything
+*		-implement texture generator
+*		-implement sound engine
 *
 **/
 
+using engine_2D::helpers::rendering::format::rectangle;
+using engine_2D::helpers::rendering::format::line;
+using engine_2D::helpers::creating::color;
+using engine_2D::helpers::creating::texture;
+
 int main(int argc, char** argv)
 {
+	engine_2D::engine e("test", 100, 100, 1024, 768, SDL_WINDOW_SHOWN);
+
 	try
 	{
-		return engine().run();
+		while (!e.quit())
+		{
+			e.engine_renderer().generateFrame();
+
+			if (e.engine_event().generalType(SDL_QUIT))
+				e.quit() = true;
+		}
+
+		return 0;
 	}
 	catch (const std::exception& e)
 	{
-		std::fstream f;
-		f.open("error.txt", std::ios::app);
+		MessageBoxA(NULL, e.what(), "error", MB_OK);
 
-		f << e.what();
+		return 0;
 	}
 }

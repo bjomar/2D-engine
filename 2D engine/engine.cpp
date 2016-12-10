@@ -1,52 +1,37 @@
+/*Copyright © Björn Marx
+*
+*for details look COPYRIGHT.txt
+*
+**/
+
 #include "engine.h"
 
-engine::engine()
+engine_2D::engine::engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags) : event(_event)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	IMG_Init(IMG_INIT_PNG);
 
-	this->window = SDL_CreateWindow("test", 60, 60, 640, 480, SDL_WINDOW_SHOWN);
-	if (!this->window)
-		throw std::exception(SDL_GetError());
-
-	this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
-	if (!this->renderer)
-		throw std::exception(SDL_GetError());
+	win = SDL_CreateWindow(titel, x, y, w, h, windowflags);
+	r = rendering::render(*win, SDL_RENDERER_ACCELERATED);
 }
 
-engine::~engine()
+engine_2D::engine::~engine()
 {
-	SDL_DestroyRenderer(this->renderer);
-	SDL_DestroyWindow(this->window);
-	IMG_Quit();
+
 	SDL_Quit();
 }
 
-int engine::run()
+engine_2D::rendering::render& engine_2D::engine::engine_renderer()
 {
-	while (!quit)
-	{
-		
-	}
-
-	return 0;
+	return r;
 }
 
-void engine::exit()
+engine_2D::eventHandler & engine_2D::engine::engine_event()
 {
-	this->quit = true;
+	return this->event;
 }
 
-SDL_Renderer * engine::engine_renderer()
+bool& engine_2D::engine::quit()
 {
-	return this->renderer;
-}
-
-SDL_Window * engine::engine_window()
-{
-	return this->window;
-}
-
-void engine::currentEvent(SDL_Event& e)
-{
-	SDL_PollEvent(&e);
+	return this->_quit;
 }

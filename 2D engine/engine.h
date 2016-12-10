@@ -1,33 +1,40 @@
+/*Copyright © Björn Marx
+*
+*for details look COPYRIGHT.txt
+*
+**/
+
 #ifndef ENGINE
 #define ENGINE
 
 #include "main.hpp"
+#include "helpers.h"
+#include "render.h"
+#include "eventHandler.h"
 
-class engine
+
+namespace engine_2D
 {
-public:
-	engine();
-	~engine();
-
-	int run();
-	void exit();
-
-	SDL_Renderer* engine_renderer();
-	SDL_Window* engine_window();
-	void currentEvent(SDL_Event&);
-
-private:
-	SDL_Window* window = nullptr;
-	SDL_Renderer* renderer = nullptr;
-
-	SDL_Event event;
-
-	struct 
+	class __declspec(dllexport) engine
 	{
-		int x = 100, y = 100;
-	}rect;
+	public:
+		engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags);
+		~engine();
 
-	bool quit =  false;
-};
+		rendering::render& engine_renderer();
+		eventHandler& engine_event();
 
+		bool& quit();
+
+	private:
+		SDL_Window* win = nullptr;
+		SDL_Event _event;
+		
+		rendering::render r;
+		eventHandler event;
+
+
+		bool _quit = false;
+	};
+}
 #endif
