@@ -6,14 +6,14 @@
 
 #include "engine.h"
 
-engine::engine::engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags)
+engine::engine::engine(const char* titel, int x, int y, int w, int h, uint32_t windowflags)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_ALL);
 	Mix_Init(MIX_ALL);
 
 	win = SDL_CreateWindow(titel, x, y, w, h, windowflags);
-	r = rendering::render(*win, SDL_RENDERER_ACCELERATED);
+	r = rendering::render(win, w, h);
 }
 
 engine::engine::~engine()
@@ -28,7 +28,7 @@ engine::engine::~engine()
 
 engine::rendering::render& engine::engine::renderer()
 {
-	return r;
+	return this->r;
 }
 
 engine::eventHandler& engine::engine::event()

@@ -38,3 +38,9 @@ engine::helpers::creating::texture::operator SDL_Texture*()
 {
 	return this->tex;
 }
+
+engine::helpers::point::point(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}

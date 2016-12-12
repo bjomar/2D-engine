@@ -2,7 +2,7 @@
 #include "engine.h"
 #include "music.h"
 #include "animation.h"
-#include <Windows.h>
+#include <iostream>
 
 /*
 *	Description: little 2D engine based on SDL
@@ -19,6 +19,7 @@ using engine::helpers::rendering::format::line;
 using engine::helpers::creating::color;
 using engine::helpers::creating::texture;
 using engine::sound::music;
+using engine::helpers::point;
 
 #undef main
 
@@ -26,33 +27,27 @@ int main(int argc, char** argv)
 {
 	engine::engine e("test", 100, 100, 1024, 768, SDL_WINDOW_SHOWN);
 
-	music m("music.mp3");
-
-	m.play();
+	rectangle rect(0, 0, 100, 100);
+	color white(255, 255, 255), black(0, 0, 0);
 
 	try
 	{
-		while (!e.quit())
-		{
-			if (e.event().event_avaliable())
-				if (e.event().key(SDLK_1))
-					if (m.musicPaused())
-						m.resume();
-					else
-						m.stop();
+		e.renderer().addRectangle(rect, white, true);
 
-			if (e.event().generalType(SDL_QUIT))
-			{
-				m.halt();
-				e.quit() = true;
-			}
+		while(!e.quit())
+		{
+			e.renderer().generateFrame();
+
+			if (e.event().event_avaliable())
+				if (e.event().generalType(SDL_QUIT))
+					e.quit() = true;
 		}
 
 		return 0;
 	}
 	catch (const std::exception& e)
 	{
-		MessageBoxA(NULL, e.what(), "error", MB_OK);
+		std::cout << e.what();
 
 		return 0;
 	}

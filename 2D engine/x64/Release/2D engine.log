@@ -1,14 +1,9 @@
-﻿  main.cpp
-c:\users\björn\documents\visual studio 2015\projects\2d-engine\2d engine\animation.h(33): warning C4251: "engine::helpers::rendering::animation::frames": class "std::vector<SDL_Texture *,std::allocator<_Ty>>" erfordert eine DLL-Schnittstelle, die von Clients von class "engine::helpers::rendering::animation" verwendet wird
-          with
-          [
-              _Ty=SDL_Texture *
-          ]
+﻿  render.cpp
      Bibliothek "C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.lib" und Objekt "C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.exp" werden erstellt.
   Code wird generiert.
-  4 of 171 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
+  2 of 172 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   2D engine.vcxproj -> C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.exe
   2D engine.vcxproj -> C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.pdb (Full PDB)

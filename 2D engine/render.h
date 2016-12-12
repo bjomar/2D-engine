@@ -18,7 +18,7 @@ namespace engine
 		{
 		public:
 			render() {}
-			render(SDL_Window& win, Uint32 renderer_flags = SDL_RENDERER_ACCELERATED);
+			render(SDL_Window* win, int w, int h, Uint32 renderer_flags = SDL_RENDERER_ACCELERATED);
 			~render();
 
 			//renders the picture
@@ -28,7 +28,7 @@ namespace engine
 			void addLine(helpers::rendering::format::line& l, helpers::creating::color& c);
 			void addLines(helpers::rendering::format::line l[], int count, helpers::creating::color & c);
 
-			//put rect with color c  fileld or not
+			//put rect with color c fileld or not
 			void addRectangle(helpers::rendering::format::rectangle& rect, helpers::creating::color& c, bool fill);
 			void addRectangles(helpers::rendering::format::rectangle rect[], int count, helpers::creating::color& c, bool fill);
 
@@ -51,6 +51,7 @@ namespace engine
 
 		private:
 			SDL_Renderer* renderer = nullptr;
+			SDL_Texture* scene = nullptr;
 		};
 	}
 }

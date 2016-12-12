@@ -13,6 +13,13 @@ namespace engine
 {
 	namespace helpers
 	{
+		struct point : SDL_Point
+		{
+		public:
+			point(int x, int y);
+			point(){}
+		};
+
 		namespace creating
 		{
 			struct __declspec(dllexport) color
