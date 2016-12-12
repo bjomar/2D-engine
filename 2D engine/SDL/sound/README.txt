@@ -1,5 +1,5 @@
 
-SDL_mixer 1.2
+SDL_mixer 2.0
 
 The latest version of this library is available from:
 http://www.libsdl.org/projects/SDL_mixer/
@@ -39,5 +39,5 @@ from:
 http://www.libsdl.org/projects/mixer/timidity/timidity.tar.gz
 and unpack them in /usr/local/lib under UNIX, and C:\ under Win32.
 
-This library is under the zlib license, see the file "COPYING" for details.
+This library is under the zlib license, see the file "COPYING.txt" for details.
 

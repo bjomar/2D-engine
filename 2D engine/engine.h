@@ -12,8 +12,7 @@
 #include "render.h"
 #include "eventHandler.h"
 
-
-namespace engine_2D
+namespace engine
 {
 	class __declspec(dllexport) engine
 	{
@@ -21,20 +20,19 @@ namespace engine_2D
 		engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags);
 		~engine();
 
-		rendering::render& engine_renderer();
-		eventHandler& engine_event();
+		rendering::render& renderer();
+		eventHandler& event();
 
 		bool& quit();
 
 	private:
 		SDL_Window* win = nullptr;
-		SDL_Event _event;
 		
+		eventHandler _event;
 		rendering::render r;
-		eventHandler event;
 
 
 		bool _quit = false;
 	};
 }
-#endif
+#endif //!engine

@@ -10,7 +10,7 @@
 #include "main.hpp"
 #include "helpers.h"
 
-namespace engine_2D
+namespace engine
 {
 	namespace rendering
 	{

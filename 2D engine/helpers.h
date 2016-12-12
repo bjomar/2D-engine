@@ -9,7 +9,7 @@
 
 #include "main.hpp"
 
-namespace engine_2D
+namespace engine
 {
 	namespace helpers
 	{

@@ -6,59 +6,28 @@
 
 #include "eventHandler.h"
 
-engine_2D::eventHandler::eventHandler(SDL_Event & _e)
+bool engine::eventHandler::event_avaliable()
 {
-	this->e = _e;
+	return SDL_PollEvent(&e);
 }
 
-bool engine_2D::eventHandler::generalType(Uint32 type)
+bool engine::eventHandler::generalType(Uint32 type)
 {
-	SDL_PollEvent(&e);
-
-	if (e.type == type)
-		return true;
-	else
-		return false;
+	return e.type == type;
 }
 
-bool engine_2D::eventHandler::key(Uint32 key, bool up)
+bool engine::eventHandler::key(Uint32 key, bool up)
 {
-	SDL_PollEvent(&e);
-
-	if (!up)
-		if (e.type == SDL_KEYDOWN)
-			if (e.key.keysym.sym == key)
-				return true;
-			else
-				return false;
-		else
-			return false;
+	if (up)
+		return e.type == SDL_KEYUP && e.key.keysym.sym == key;
 	else
-		if (e.type == SDL_KEYUP)
-			if (e.key.keysym.sym == key)
-				return true;
-			else return false;
-		else
-			return false;
+		return e.type == SDL_KEYDOWN && e.key.keysym.sym == key;
 }
 
-bool engine_2D::eventHandler::mouseButton(Uint32 button, bool up)
+bool engine::eventHandler::mouseButton(Uint32 button, bool up)
 {
-	SDL_PollEvent(&e);
-
-	if (!up)
-		if (e.type == SDL_MOUSEBUTTONDOWN)
-			if (e.button.button == button)
-				return true;
-			else
-				return false;
-		else
-			return false;
+	if (up)
+		return e.type == SDL_MOUSEBUTTONUP && e.button.button == button;
 	else
-		if (e.type == SDL_MOUSEBUTTONUP)
-			if (e.button.button == button)
-				return true;
-			else return false;
-		else
-			return false;
+		return e.type == SDL_MOUSEBUTTONDOWN && e.button.button == button;
 }

@@ -6,32 +6,37 @@
 
 #include "engine.h"
 
-engine_2D::engine::engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags) : event(_event)
+engine::engine::engine(const char* titel, int x, int y, int w, int h, Uint32 windowflags)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	IMG_Init(IMG_INIT_PNG);
+	IMG_Init(IMG_ALL);
+	Mix_Init(MIX_ALL);
 
 	win = SDL_CreateWindow(titel, x, y, w, h, windowflags);
 	r = rendering::render(*win, SDL_RENDERER_ACCELERATED);
 }
 
-engine_2D::engine::~engine()
+engine::engine::~engine()
 {
+	SDL_DestroyRenderer(r);
+	SDL_DestroyWindow(win);
 
+	Mix_Quit();
+	IMG_Quit();
 	SDL_Quit();
 }
 
-engine_2D::rendering::render& engine_2D::engine::engine_renderer()
+engine::rendering::render& engine::engine::renderer()
 {
 	return r;
 }
 
-engine_2D::eventHandler & engine_2D::engine::engine_event()
+engine::eventHandler& engine::engine::event()
 {
-	return this->event;
+	return this->_event;
 }
 
-bool& engine_2D::engine::quit()
+bool& engine::engine::quit()
 {
 	return this->_quit;
 }

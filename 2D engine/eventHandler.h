@@ -9,12 +9,15 @@
 
 #include "main.hpp"
 
-namespace engine_2D
+namespace engine
 {
 	class __declspec(dllexport) eventHandler
 	{
 	public:
-		eventHandler(SDL_Event& _e);
+		eventHandler() {}
+		~eventHandler() {}
+
+		bool event_avaliable();
 
 		bool generalType(Uint32 type);
 		bool key(Uint32 key, bool up = false);

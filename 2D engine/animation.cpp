@@ -6,12 +6,12 @@
 
 #include "animation.h"
 
-engine_2D::helpers::rendering::animation::animation(std::vector<SDL_Texture*> _frames)
+engine::helpers::rendering::animation::animation(std::vector<SDL_Texture*> _frames)
 {
 	frames = _frames;
 }
 
-SDL_Texture* engine_2D::helpers::rendering::animation::nextFrame()
+SDL_Texture* engine::helpers::rendering::animation::nextFrame()
 {
 	if (animationFrame > frames.size())
 		animationFrame = 0;
@@ -19,7 +19,7 @@ SDL_Texture* engine_2D::helpers::rendering::animation::nextFrame()
 	return frames.at((animationFrame++ - 1));
 }
 
-void engine_2D::helpers::rendering::animation::appendTextureToFrames(SDL_Texture* tex)
+void engine::helpers::rendering::animation::appendTextureToFrames(SDL_Texture* tex)
 {
 	frames.push_back(tex);
 }
