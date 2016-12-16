@@ -20,8 +20,12 @@ namespace engine
 		engine(const char* titel, int x, int y, int w, int h, const char* iconFile = NULL, uint32_t windowflags = SDL_WINDOW_SHOWN, uint32_t rendererFlags = SDL_RENDERER_ACCELERATED);
 		~engine();
 
-		rendering::render& renderer();
-		eventHandler& event();
+		rendering::render* operator->();
+
+		bool operator()(helpers::keyboard k, bool up = false);
+		bool operator()(helpers::mouse b, bool up = false);
+		bool operator()(helpers::other o);
+		bool operator()();
 
 		bool& quit();
 		

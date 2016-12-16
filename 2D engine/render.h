@@ -27,6 +27,8 @@ namespace engine
 			//adds a speciifik line to the renderer
 			void addLine(helpers::rendering::format::line l, helpers::creating::color c);
 
+			void addDot(int diameter, helpers::point p, helpers::creating::color c);
+			
 			//put rect with color c filled or not filled
 			void addRectangle(helpers::rendering::format::rectangle rect, helpers::creating::color c, bool fill);
 			void addRectangle(helpers::rendering::format::rectangle rect, helpers::creating::color c, double angle, bool fill);
@@ -35,11 +37,13 @@ namespace engine
 			void addTexture(SDL_Texture* tex);
 			//put whole texture @ dstRect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect);
-			//put texture rotated by angle
+			//put texture rotated by angle @ dstRect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect, double angle);
+			//put srcRect of texture rotated by angle @ dstRect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect, double angle);
-			//put texture rotated by angle - rotate around p_center
+			//put texture rotated by angle rotated around p_center @ dstRect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect, helpers::point p_center, double angle);
+			//put srcRect of texture rotated by angle rotated around p_center @ dstRect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect, helpers::point p_center, double angle);
 			//put srcRect of texture @ dstrect
 			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect);
@@ -50,11 +54,12 @@ namespace engine
 			//clears the renderer, will generate a black picture
 			void clear();
 
-			operator SDL_Renderer* ();
+			SDL_Renderer* renderer();
+			operator SDL_Renderer*();
 
 		private:
 
-			SDL_Renderer* renderer = nullptr;
+			SDL_Renderer* _renderer = nullptr;
 			SDL_Texture* scene = nullptr;
 			SDL_Texture* bufTex = nullptr;
 		};

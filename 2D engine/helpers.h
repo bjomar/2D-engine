@@ -13,6 +13,30 @@ namespace engine
 {
 	namespace helpers
 	{
+		enum keyboard
+		{
+			W = SDLK_w,
+			A = SDLK_a,
+			S = SDLK_s,
+			D = SDLK_d,
+			ARROW_UP = SDLK_UP,
+			ARROW_LEFT = SDLK_LEFT,
+			ARROW_DOWN = SDLK_DOWN,
+			ARROW_RIGHT = SDLK_RIGHT
+		};
+
+		enum mouse
+		{
+			BUTTON_LEFT = SDL_BUTTON_LEFT,
+			BUTTON_RIGHT = SDL_BUTTON_RIGHT,
+			BUTTON_MITTDLE = SDL_BUTTON_MIDDLE
+		};
+
+		enum other
+		{
+			QUIT = SDL_QUIT
+		};
+
 		struct point : SDL_Point
 		{
 		public:

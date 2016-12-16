@@ -6,7 +6,8 @@
 
 /*
 *	Description: little 2D engine based on SDL
-*	License: GPL V2 -> mor info: LICENSE.txt
+*	License: GPL V2 -> more info: LICENSE.txt
+*	copyright © Björn marx 2016
 *
 *	todo:
 *		-implement texture generator
@@ -20,6 +21,9 @@ using engine::helpers::creating::color;
 using engine::helpers::creating::texture;
 using engine::sound::music;
 using engine::helpers::point;
+using engine::helpers::keyboard;
+using engine::helpers::mouse;
+using engine::helpers::other;
 
 #undef main
 
@@ -27,30 +31,29 @@ int main(int argc, char** argv)
 {
 	engine::engine e("test", 50, 50, 1024, 768);
 
-	double angle = 0.0;
-
-	rectangle rect(100, 100, 100, 100), sweg(0, 0, 100, 100);
-	point center_rect((rect.x + rect.w) / 2, (rect.y + rect.h) / 2);
-	color white(255, 255, 255), black(0, 0, 0);
+	rectangle rect(100, 100, 100, 100);
+	color white(255, 255, 255);
+	
+	srand((int)"penis");
 
 	try
 	{
-		while(!e.quit())
+		for (size_t i = 0; i < 1024; i += 50)
 		{
-			e.renderer().clear();
-			e.renderer().backgroundcolor(black);
-			e.renderer().addRectangle(rect, white, angle, true);
-			e.renderer().generateFrame();
-
-			if (e.event().event_avaliable())
+			for (size_t j = 0; j < 768; j += 50)
 			{
-				if (e.event().key(SDLK_RIGHT))
-					angle += 0.2;
+				e->addRectangle(rectangle(i, j, 10, 10), color(rand(), rand(), rand()), true);
+				//e->addDot(10, point(i, j), color(rand(), rand(), rand()));
+			}
+		}
 
-				if (e.event().key(SDLK_LEFT))
-					angle -= 0.2;
+		while (!e.quit())
+		{
+			e->generateFrame();
 
-				if (e.event().generalType(SDL_QUIT))
+			if (e())
+			{
+				if (e(other::QUIT))
 					e.quit() = true;
 			}
 		}
