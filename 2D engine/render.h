@@ -25,24 +25,27 @@ namespace engine
 			void generateFrame();
 
 			//adds a speciifik line to the renderer
-			void addLine(helpers::rendering::format::line& l, helpers::creating::color& c);
-			void addLines(helpers::rendering::format::line l[], int count, helpers::creating::color & c);
+			void addLine(helpers::rendering::format::line l, helpers::creating::color c);
 
-			//put rect with color c fileld or not
-			void addRectangle(helpers::rendering::format::rectangle& rect, helpers::creating::color& c, bool fill);
-			void addRectangles(helpers::rendering::format::rectangle rect[], int count, helpers::creating::color& c, bool fill);
+			//put rect with color c filled or not filled
+			void addRectangle(helpers::rendering::format::rectangle rect, helpers::creating::color c, bool fill);
+			void addRectangle(helpers::rendering::format::rectangle rect, helpers::creating::color c, double angle, bool fill);
 
 			//put whole texture to the whole screen
 			void addTexture(SDL_Texture* tex);
-			
 			//put whole texture @ dstRect
-			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle& dstRect);
-			
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect);
+			//put texture rotated by angle
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect, double angle);
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect, double angle);
+			//put texture rotated by angle - rotate around p_center
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle dstRect, helpers::point p_center, double angle);
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect, helpers::point p_center, double angle);
 			//put srcRect of texture @ dstrect
-			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle& srcRect, helpers::rendering::format::rectangle& dstRect);
+			void addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect);
 
 			//sets the backgroundcolor
-			void backgroundcolor(helpers::creating::color& c);
+			void backgroundcolor(helpers::creating::color c);
 
 			//clears the renderer, will generate a black picture
 			void clear();
@@ -50,8 +53,10 @@ namespace engine
 			operator SDL_Renderer* ();
 
 		private:
+
 			SDL_Renderer* renderer = nullptr;
 			SDL_Texture* scene = nullptr;
+			SDL_Texture* bufTex = nullptr;
 		};
 	}
 }

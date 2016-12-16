@@ -17,7 +17,7 @@ namespace engine
 	class __declspec(dllexport) engine
 	{
 	public:
-		engine(const char* titel, int x, int y, int w, int h, uint32_t windowflags);
+		engine(const char* titel, int x, int y, int w, int h, const char* iconFile = NULL, uint32_t windowflags = SDL_WINDOW_SHOWN, uint32_t rendererFlags = SDL_RENDERER_ACCELERATED);
 		~engine();
 
 		rendering::render& renderer();

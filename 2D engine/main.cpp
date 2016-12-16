@@ -25,22 +25,34 @@ using engine::helpers::point;
 
 int main(int argc, char** argv)
 {
-	engine::engine e("test", 100, 100, 1024, 768, SDL_WINDOW_SHOWN);
+	engine::engine e("test", 50, 50, 1024, 768);
 
-	rectangle rect(0, 0, 100, 100);
+	double angle = 0.0;
+
+	rectangle rect(100, 100, 100, 100), sweg(0, 0, 100, 100);
+	point center_rect((rect.x + rect.w) / 2, (rect.y + rect.h) / 2);
 	color white(255, 255, 255), black(0, 0, 0);
 
 	try
 	{
-		e.renderer().addRectangle(rect, white, true);
-
 		while(!e.quit())
 		{
+			e.renderer().clear();
+			e.renderer().backgroundcolor(black);
+			e.renderer().addRectangle(rect, white, angle, true);
 			e.renderer().generateFrame();
 
 			if (e.event().event_avaliable())
+			{
+				if (e.event().key(SDLK_RIGHT))
+					angle += 0.2;
+
+				if (e.event().key(SDLK_LEFT))
+					angle -= 0.2;
+
 				if (e.event().generalType(SDL_QUIT))
 					e.quit() = true;
+			}
 		}
 
 		return 0;

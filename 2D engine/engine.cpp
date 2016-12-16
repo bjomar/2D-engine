@@ -6,14 +6,18 @@
 
 #include "engine.h"
 
-engine::engine::engine(const char* titel, int x, int y, int w, int h, uint32_t windowflags)
+
+engine::engine::engine(const char* titel, int x, int y, int w, int h, const char* iconFile, uint32_t windowflags, uint32_t rendererFlags)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_ALL);
 	Mix_Init(MIX_ALL);
 
+	if (iconFile != NULL)
+		SDL_SetWindowIcon(this->win, IMG_Load(iconFile));
+
 	win = SDL_CreateWindow(titel, x, y, w, h, windowflags);
-	r = rendering::render(win, w, h);
+	r = rendering::render(win, w, h, rendererFlags);
 }
 
 engine::engine::~engine()
@@ -26,7 +30,7 @@ engine::engine::~engine()
 	SDL_Quit();
 }
 
-engine::rendering::render& engine::engine::renderer()
+engine::rendering::render & engine::engine::renderer()
 {
 	return this->r;
 }
