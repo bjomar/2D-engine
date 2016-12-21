@@ -42,8 +42,7 @@ int main(int argc, char** argv)
 		{
 			for (size_t j = 0; j < 768; j += 50)
 			{
-				e->addRectangle(rectangle(i, j, 10, 10), color(rand(), rand(), rand()), true);
-				//e->addDot(10, point(i, j), color(rand(), rand(), rand()));
+				e->addDot(10, point(i, j), color(rand(), rand(), rand()));
 			}
 		}
 
