@@ -4,14 +4,16 @@ c:\users\björn\documents\visual studio 2015\projects\2d-engine\2d engine\animat
           [
               _Ty=SDL_Texture *
           ]
-main.cpp(37): warning C4311: "Typumwandlung": Zeigerverkürzung von "const char *" zu "int"
-main.cpp(37): warning C4302: "Typumwandlung": Verkürzung von "const char *" in "int"
-main.cpp(45): warning C4267: "Argument": Konvertierung von "size_t" nach "int", Datenverlust möglich
+  c:\users\björn\documents\visual studio 2015\projects\2d-engine\2d engine\animation.h(23): note: Siehe Deklaration von "std::vector<SDL_Texture *,std::allocator<_Ty>>"
+          with
+          [
+              _Ty=SDL_Texture *
+          ]
      Bibliothek "C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.lib" und Objekt "C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.exp" werden erstellt.
   Code wird generiert.
-  2 of 180 functions ( 1.1%) were compiled, the rest were copied from previous compilation.
+  1 of 184 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Codegenerierung ist abgeschlossen.
   2D engine.vcxproj -> C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.exe
   2D engine.vcxproj -> C:\Users\björn\Documents\Visual Studio 2015\Projects\2D-engine\x64\Release\2D engine.pdb (Full PDB)

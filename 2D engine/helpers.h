@@ -19,10 +19,18 @@ namespace engine
 			A = SDLK_a,
 			S = SDLK_s,
 			D = SDLK_d,
+			ESCAPE = SDLK_ESCAPE,
 			ARROW_UP = SDLK_UP,
 			ARROW_LEFT = SDLK_LEFT,
 			ARROW_DOWN = SDLK_DOWN,
 			ARROW_RIGHT = SDLK_RIGHT
+
+			
+		};
+
+		enum other
+		{
+			QUIT = SDL_QUIT
 		};
 
 		enum mouse
@@ -30,11 +38,6 @@ namespace engine
 			BUTTON_LEFT = SDL_BUTTON_LEFT,
 			BUTTON_RIGHT = SDL_BUTTON_RIGHT,
 			BUTTON_MITTDLE = SDL_BUTTON_MIDDLE
-		};
-
-		enum other
-		{
-			QUIT = SDL_QUIT
 		};
 
 		struct point : SDL_Point

@@ -48,9 +48,9 @@ void engine::rendering::render::addLine(helpers::rendering::format::line l, help
 
 void engine::rendering::render::addDot(int diameter, helpers::point p, helpers::creating::color c)
 {
-	for (size_t i = 0; i < 360; i++)
+	for (size_t i = 0; i < 90; i+=3)
 	{
-		this->addRectangle(helpers::rendering::format::rectangle(p.x - diameter / 2, p.y-5, diameter, 10), c, i, true);
+		this->addRectangle(helpers::rendering::format::rectangle(p.x - diameter / 2, p.y-5, diameter, diameter), c, i, true);
 	}
 }
 
@@ -144,7 +144,8 @@ void engine::rendering::render::addTexture(SDL_Texture* tex, helpers::rendering:
 		throw std::exception(SDL_GetError());
 }
 
-void engine::rendering::render::addTexture(SDL_Texture * tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect, double angle)
+void engine::rendering::render::addTexture(SDL_Texture * tex, helpers::rendering::format::rectangle srcRect,
+	helpers::rendering::format::rectangle dstRect, double angle)
 {
 	if (SDL_SetRenderTarget(this->_renderer, this->scene) < 0)
 		throw std::exception(SDL_GetError());
@@ -156,7 +157,8 @@ void engine::rendering::render::addTexture(SDL_Texture * tex, helpers::rendering
 		throw std::exception(SDL_GetError());
 }
 
-void engine::rendering::render::addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect, helpers::rendering::format::rectangle dstRect)
+void engine::rendering::render::addTexture(SDL_Texture* tex, helpers::rendering::format::rectangle srcRect,
+	helpers::rendering::format::rectangle dstRect)
 {
 	if (SDL_SetRenderTarget(this->_renderer, this->scene) < 0)
 		throw std::exception(SDL_GetError());
